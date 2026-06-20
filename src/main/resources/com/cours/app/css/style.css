@@ -1,0 +1,112 @@
+.app-root {
+    -fx-font-family: "SF Pro Display", "Helvetica Neue", "Segoe UI", "Inter", sans-serif;
+}
+.app-root.dark {
+    -c-text: #e9ebff;
+    -c-text-dim: #969cc6;
+    -c-surface: rgba(255, 255, 255, 0.06);
+    -c-surface-2: rgba(255, 255, 255, 0.035);
+    -c-border: rgba(255, 255, 255, 0.10);
+    -c-field-bg: rgba(255, 255, 255, 0.05);
+    -c-accent: #8b5cf6;
+    -c-accent-2: #ec4899;
+    -c-danger: #f43f5e;
+    -c-success: #22c55e;
+    -c-hover: rgba(255, 255, 255, 0.06);
+}
+.app-root.light {
+    -c-text: #1b2140;
+    -c-text-dim: #6b7390;
+    -c-surface: #ffffff;
+    -c-surface-2: #f6f7fc;
+    -c-border: rgba(20, 22, 60, 0.10);
+    -c-field-bg: #f2f3fb;
+    -c-accent: #7c3aed;
+    -c-accent-2: #db2777;
+    -c-danger: #e11d48;
+    -c-success: #16a34a;
+    -c-hover: rgba(20, 22, 60, 0.045);
+}
+
+.login-card {
+    -fx-background-color: -c-surface;
+    -fx-background-radius: 26;
+    -fx-border-color: -c-border;
+    -fx-border-radius: 26;
+    -fx-padding: 42 40 34 40;
+    -fx-effect: dropshadow(gaussian, rgba(10, 8, 40, 0.45), 48, 0, 0, 22);
+}
+
+.login-title {
+    -fx-text-fill: -c-text;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+
+.login-subtitle {
+    -fx-text-fill: -c-text-dim;
+    -fx-font-size: 14px;
+}
+
+/* ── Labels des champs ────────────────────────────────────────── */
+.field-label {
+    -fx-text-fill: -c-text-dim;
+    -fx-font-size: 15px;
+    -fx-padding: 0 0 0 16;
+}
+
+/* ── Champs de saisie ─────────────────────────────────────────── */
+.input-field {
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+    -fx-font-size: 14;
+    -fx-font-family: "Arial";
+    -fx-pref-height: 42;
+}
+
+.input-field:focused {
+     -fx-border-color: -c-accent;
+    -fx-effect: dropshadow(gaussian, rgba(139, 92, 246, 0.45), 16, 0, 0, 0);
+}
+
+/* ── Case à cocher ────────────────────────────────────────────── */
+.check-label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 12;
+    -fx-text-fill: #64748b;
+}
+
+/* ── Bouton Se connecter ──────────────────────────────────────── */
+.login-btn {
+    -fx-background-color: #4f46e5;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-pref-height: 44;
+}
+
+.login-btn:hover {
+    -fx-background-color: #4338ca;
+}
+
+.login-btn:pressed {
+    -fx-background-color: #3730a3;
+}
+
+/* ── Message de retour ────────────────────────────────────────── */
+.message-success {
+    -fx-font-family: "Arial";
+    -fx-font-size: 13;
+    -fx-text-fill: #16a34a;
+}
+
+.message-error {
+    -fx-text-fill: -c-danger;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
