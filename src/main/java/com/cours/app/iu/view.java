@@ -12,11 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-/**
- * PARTIE 1 — Interface de connexion construite entièrement en code Java.
- * Les styles sont définis dans resources/com/cours/app/css/app.css
- * et appliqués via getStyleClass().add(...).
- */
 public class view {
 
     private final AuthService authService = new AuthService();
@@ -27,35 +22,29 @@ public class view {
     private CheckBox showPasswordCheck;
     private Label messageLabel;
 
-    /**
-     * Construit et retourne la scène JavaFX.
-     * Le fichier CSS est chargé ici via scene.getStylesheets().
-     */
     public Scene buildScene(Stage stage) {
 
-        // ── Titre ──────────────────────────────────────────────────────────
         Label titleLabel = new Label("Connexion");
         titleLabel.getStyleClass().add("login-title");
 
-        Label subtitleLabel = new Label("Entrez vos identifiants pour continuer");
+        Label subtitleLabel = new Label("Entrez les informations");
         subtitleLabel.getStyleClass().add("login-subtitle");
 
         VBox header = new VBox(6, titleLabel, subtitleLabel);
         header.setAlignment(Pos.CENTER);
 
         // ── Champ Email ────────────────────────────────────────────────────
-        Label usernameLabel = new Label("Email");
+        Label usernameLabel = new Label("Email:");
         usernameLabel.getStyleClass().add("field-label");
 
         usernameField = new TextField();
-        usernameField.setPromptText("ex : admin@mail.com");
+        usernameField.setPromptText("rotsynomena9@gmail.com");
         usernameField.getStyleClass().add("input-field");
         usernameField.setOnAction(e -> handleLogin());
 
         VBox usernameBox = new VBox(6, usernameLabel, usernameField);
 
-        // ── Champ Mot de passe ─────────────────────────────────────────────
-        Label passwordLabel = new Label("Mot de passe");
+        Label passwordLabel = new Label("Mot de passe:");
         passwordLabel.getStyleClass().add("field-label");
 
         passwordField = new PasswordField();
@@ -63,7 +52,6 @@ public class view {
         passwordField.getStyleClass().add("input-field");
         passwordField.setOnAction(e -> handleLogin());
 
-        // Champ texte visible (BONUS : afficher le mot de passe)
         passwordVisible = new TextField();
         passwordVisible.setPromptText("••••••••");
         passwordVisible.getStyleClass().add("input-field");
@@ -71,10 +59,8 @@ public class view {
         passwordVisible.setManaged(false);
         passwordVisible.setOnAction(e -> handleLogin());
 
-        // Synchronisation bidirectionnelle entre les deux champs
         passwordField.textProperty().bindBidirectional(passwordVisible.textProperty());
 
-        // BONUS : case à cocher
         showPasswordCheck = new CheckBox("Afficher le mot de passe");
         showPasswordCheck.getStyleClass().add("check-label");
         showPasswordCheck.setOnAction(e -> togglePassword());
@@ -82,7 +68,6 @@ public class view {
         StackPane passwordStack = new StackPane(passwordField, passwordVisible);
         VBox passwordBox = new VBox(6, passwordLabel, passwordStack, showPasswordCheck);
 
-        // ── Bouton Se connecter ────────────────────────────────────────────
         Button loginButton = new Button("Se connecter");
         loginButton.getStyleClass().add("login-btn");
         loginButton.setMaxWidth(Double.MAX_VALUE);
@@ -138,7 +123,6 @@ public class view {
             return;
         }
 
-        // Vérification via AuthService (retourne Optional<User>)
         authService.login(email, password).ifPresentOrElse(
             user -> {
                 showMessage("Connexion reussie ! Bienvenue, " + user.getUsername() + ".", true);
@@ -151,14 +135,12 @@ public class view {
         );
     }
 
-    /** Affiche un message de succès ou d'erreur via les classes CSS. */
     private void showMessage(String text, boolean success) {
         messageLabel.setText(text);
         messageLabel.getStyleClass().removeAll("message-success", "message-error");
         messageLabel.getStyleClass().add(success ? "message-success" : "message-error");
     }
 
-    /** BONUS : ouvre une fenêtre tableau de bord après connexion réussie. */
     private void openDashboard(String username) {
         Stage dash = new Stage();
         dash.setTitle("Tableau de bord");
@@ -167,9 +149,11 @@ public class view {
         welcome.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         welcome.setTextFill(Color.web("#1e293b"));
 
-        Label info = new Label("Connexion reussie (Partie 1 - Code Java).");
+        Label info = new Label("Connexion reussie");
         info.setFont(Font.font("Arial", 13));
         info.setTextFill(Color.web("#64748b"));
+
+        Label by = new Label("By HERIFITIAVANA Rotsy Nomena");
 
         VBox box = new VBox(14, welcome, info);
         box.setAlignment(Pos.CENTER);
